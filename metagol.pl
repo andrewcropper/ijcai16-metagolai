@@ -108,7 +108,7 @@ target_predicate([[P|Args]|_],P/A):-
   length(Args,A).
 
 invented_symbols(0,_Name,[]):-!.
-invented_symbols(M,Name,[InvSym/_Arity|Sig]) :-
+invented_symbols(M,Name,[InvSym/2|Sig]) :-
   atomic_list_concat([Name,M],InvSym),
   succ(Prev,M),
   invented_symbols(Prev,Name,Sig).

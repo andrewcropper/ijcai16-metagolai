@@ -1,3 +1,11 @@
+user:interpreted(map/3).
+user:interpreted(filter/3).
+user:interpreted(reduce/3).
+user:interpreted(reduceback/3).
+user:interpreted(fold/4).
+user:interpreted(until/4).
+user:interpreted(ifthenelse/5).
+
 background(([map,[],[],_F]:- [])).
 background(([map,[A|As],[B|Bs],F]:- [[F,A,B],[map,As,Bs,F]])).
 

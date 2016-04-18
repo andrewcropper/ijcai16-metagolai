@@ -56,7 +56,6 @@ prove_aux([P|Args],_,_,G,G):-
   user:primtest(P,Args),!,
   user:primcall(P,Args).
 
-
 prove_aux(Atom,Sig,MaxN,G1,G2):-
   Atom = [P|Args],
   length(Args,A),
@@ -76,12 +75,11 @@ prove_aux(Atom,Sig,MaxN,G1,G2):-
   user:metarule_init(Name,MetaSub,(Atom:-Body)),
   prove(Body,Sig,MaxN,G1,G2).
 
-prove_aux(Atom,Sig,MaxN,G1,G2):-
-  Atom = [P|_],
-  member(P,[until,ifthenelse,map,fold,foldback,filter,reduce,reduceback]),!,
-  trace,
-  user:background((Atom:-Body)),
-  prove(Body,Sig,MaxN,G1,G2).
+%% prove_aux(Atom,Sig,MaxN,G1,G2):-
+%%   Atom = [P|_],
+%%   member(P,[until,ifthenelse,map,fold,foldback,filter,reduce,reduceback]),!,
+%%   user:background((Atom:-Body)),
+%%   prove(Body,Sig,MaxN,G1,G2).
 
 %% new abduction
 prove_aux(Atom,Sig1,MaxN,G1,G2):-
@@ -130,7 +128,7 @@ target_predicate([[P|Args]|_],P/A):-
   length(Args,A).
 
 invented_symbols(0,_Name,[]):-!.
-invented_symbols(M,Name,[InvSym/_Arity|Sig]) :-
+invented_symbols(M,Name,[InvSym/2|Sig]) :-
   atomic_list_concat([Name,M],InvSym),
   succ(Prev,M),
   invented_symbols(Prev,Name,Sig).

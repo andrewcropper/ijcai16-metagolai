@@ -12,6 +12,8 @@
 %%   Actual = [P,A,Z],
 %%   \+ (metagol:prove_deduce(Actual,PS,G),Z \= B).
 
+
+
 func_test(Atom,PS,G):-
   Atom = [P,A,B],
   Actual = [P,A,Z],
